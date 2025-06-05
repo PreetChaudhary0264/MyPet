@@ -1,0 +1,29 @@
+.my-pets-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.pet-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.pet-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  width: 250px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transition: 0.2s ease;
+}
+
+.pet-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
