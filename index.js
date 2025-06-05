@@ -8,8 +8,8 @@ const PORT = process.env.PORT || 4000;
 
 const cors = require('cors');
 const allowedOrigins = [
-  'http://localhost:3000', // for local dev
-  'https://your-frontend.vercel.app', // replace with your real deployed frontend URL
+  // 'http://localhost:3000', // for local dev
+  'https://mypetfrontend1-4drn-h8z8ieoze.vercel.app', // replace with your real deployed frontend URL
 ];
 
 app.use(cors({
