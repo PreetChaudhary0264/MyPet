@@ -7,10 +7,22 @@ const PORT = process.env.PORT || 4000;
 
 
 const cors = require('cors');
+const allowedOrigins = [
+  'http://localhost:3000', // for local dev
+  'https://your-frontend.vercel.app', // replace with your real deployed frontend URL
+];
+
 app.use(cors({
-  origin: ['http://localhost:3001'], // frontend IP and port
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
+
 
 
 
@@ -55,8 +67,9 @@ app.get('/', (req, res) => {
 // app.listen(PORT,'0.0.0.0', () => {
 //   console.log(`Server is running on port ${PORT}`);
 // });
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
 
 
