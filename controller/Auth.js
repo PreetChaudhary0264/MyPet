@@ -26,7 +26,7 @@ exports.signUp = async (req,res)=>{
         } catch (error) {
             return res.status(500).json({
                 success:false,
-                message:"error in hashing pasword",
+                message:"Error in hashing pasword",
             })
         }
 
@@ -59,7 +59,7 @@ exports.login = async(req,res)=>{
         if(!email || !password){
             return res.status(400).json({
                 success:false,
-                message:"please fill all the datails carefully"
+                message:"Please fill all the details carefully"
             })
         }
         //check user exist or not
@@ -69,7 +69,7 @@ exports.login = async(req,res)=>{
         if(!user){
             return res.status(401).json({
                 status:false,
-                message:"pehle signup krke aao"
+                message:"Please SignUp First",
             })
         }
        
@@ -94,6 +94,11 @@ exports.login = async(req,res)=>{
             //agar hmne response me password bhi send kr diya to hacker ko email and pass dono mil jaynge
             //user ke object me se pass htaya hai database me se nhi
             user.password = undefined;
+            //isse passowrd undefined ho jata hai but password key tbhi bhi rhti hai
+            //so best practice hai ki password key ko bhi hta do
+           
+            // const { password, ...userWithoutPassword } = user.toObject();
+            // userWithoutPassword.token = token;
 
             //create cookie
             //3 chize pass krni pdti hai => 1- cookie ka naam ,2- cookie ka data, 3- kuch options
@@ -107,8 +112,9 @@ exports.login = async(req,res)=>{
            res.cookie("token", token, options).status(200).json({
                success: true,
               token,
-              user,
-             message: "user logged in successfully",
+            //   user : userWithoutPassword,
+            user,
+             message: "User logged in successfully",
             });
 
 
@@ -116,7 +122,7 @@ exports.login = async(req,res)=>{
         }else{
             return res.status(403).json({
                 success:false,
-                message:"password incorrect"
+                message:"Password Incorrect"
             })
         }
 
@@ -124,7 +130,7 @@ exports.login = async(req,res)=>{
         console.log(error);
         return res.status(500).json({
             success:false,
-            message:"login failure",
+            message:"Login Failure",
         })
         
     }

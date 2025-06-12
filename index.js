@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 4000;
 
 const cors = require('cors');
 const allowedOrigins = [
-  //  'http://localhost:3000', // for local dev
+  //  'http://localhost:3001', // for local dev
   'https://mypetfrontend1.vercel.app', // replace with your real deployed frontend URL
 ];
 
