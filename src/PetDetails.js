@@ -21,7 +21,7 @@ const PetDetails = () => {
         setError('Error fetching pet data.');
       });
   }, [id]);
-
+ //will update the ui
   if (error) return <p>{error}</p>;
   if (!pet) return <p>Loading...</p>;
 
