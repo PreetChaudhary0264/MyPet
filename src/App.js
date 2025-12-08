@@ -1,4 +1,4 @@
-// src/App.js
+
 import React from 'react';
 // import { AuthProvider } from "./context/AuthContext";
 import './App.css';
